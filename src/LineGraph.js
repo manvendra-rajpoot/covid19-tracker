@@ -47,7 +47,7 @@ const options = {
     },
 };
 
-function LineGraph({caseType = 'cases', bg_col='#ff9999', border_col='#cc1034'}) {
+function LineGraph({caseType = 'cases', bg_col='#ecc6ec', border_col='#732673', ...props }){
     const [data, setData] = useState({});
     const buildChartData = (data, caseType = 'cases') => {
         let chartData = [];
@@ -82,7 +82,7 @@ function LineGraph({caseType = 'cases', bg_col='#ff9999', border_col='#cc1034'})
 
     
     return (
-        <div >
+        <div className={props.className}>
             {data && data.length >0 && (
                 <Line 
                     options = {options}

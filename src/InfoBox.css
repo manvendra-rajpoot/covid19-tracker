@@ -1,3 +1,31 @@
 .infobox{
-    /* padding: 1px; */
+    flex: 1;
+    cursor: pointer;
+}
+.infobox:not(:last-child){
+    margin-right: 15px;
+}
+.infobox__cases{
+    color: rgb(230, 16, 16);
+    font-weight: 500;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.3rem;
+}
+.infobox__cases--green{
+    color: rgb(23, 197, 0) !important;
+}
+/* !important means overwritting Material-UI */
+
+.infobox__total{
+    color: #546e6e !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    margin-top: 12px !important;
+}
+.infobox--selected{
+    border-top: 10px solid rgb(118, 250, 66);
+}
+.infobox--red{
+    border-color:  rgb(255, 54, 54);
 }

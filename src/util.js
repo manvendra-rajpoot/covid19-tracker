@@ -7,7 +7,7 @@ const casesTypeColors={
         hex:"#cc1035",
         rgb: "rgb(204, 16, 52)",
         half_op: "rgba(204, 16, 52, 0.5)",
-        multiplier: 500,
+        multiplier: 800,
     },
     recovered: {
         hex: "#7dd71d",
@@ -39,6 +39,10 @@ export const sortData = (data) => {
     sortedData.sort((a,b) => ( (a.cases < b.cases) ? 1 : -1 ));
     return sortedData;
 };
+
+
+export const makePrettierToday = (stats) => stats ? `+${numeral(stats).format('0.0a')}` : '+0';
+export const makePrettierTotal = (stats) => stats ? `${numeral(stats).format('0.0a')}` : '+0';
 
 //DRAW circles on Map with interactive tooltips
 export const showDetailsOnMap = (data, casesType='cases') => (

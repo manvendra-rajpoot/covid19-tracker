@@ -16,13 +16,29 @@ body{
     justify-content: space-between;
     margin-bottom: 20px;
 }
+.app__header >h1{
+    color: rgb(255, 0, 0);
+    font-size: 2rem;
+}
+.app__header__form{
+    background-color: white;
+}
 
 .app__left{
     flex: 0.9;
 }
-/* .app__right{
-    flex: 0.1;
-} */
+.app__right{
+    display: flex;
+    flex-direction: column;
+}
+.app__right .MuiCardContent-root{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.app__graph{
+    flex-grow: 1;
+}
 
 .app__stats{
     display: flex;

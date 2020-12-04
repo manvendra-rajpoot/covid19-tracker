@@ -15,7 +15,6 @@ function Mapp({countries, casesType, center, zoom}) {
             /* Bigger circle more cases !*/}
             {showDetailsOnMap(countries, casesType)}
 
-
             </LeafletMap>
         </div>
     )

@@ -5,7 +5,7 @@ import InfoBox from './InfoBox';
 import Mapp from './Mapp';
 import Table from './Table';
 import LineGraph from './LineGraph';
-import { sortData } from './util';
+import { sortData, makePrettierToday, makePrettierTotal } from './util';
 import 'leaflet/dist/leaflet.css' ;
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({lat:34.80746, lng: -40.4796});
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState('cases');
 
   //useEffect() is a powerful `hook` in react to 
   //run a piece of  code based on a condition
@@ -85,7 +86,7 @@ function App() {
           <FormControl className='app__header__form'>
             <Select variant='outlined' onChange={onCountryChange} value={country}>
               
-              <MenuItem value='worldwide'>WorldWide</MenuItem>
+              <MenuItem  value='worldwide'>WorldWide</MenuItem>
               {countries.map((country) => (
                 <MenuItem value={country.value}>{country.name}</MenuItem>
               ))}
@@ -95,18 +96,29 @@ function App() {
         </div>
 
         <div className='app__stats'>
-          <InfoBox title='CoronaVirus Cases' 
-            cases={countryInfo.todayCases} 
-            total={countryInfo.cases} />
-          <InfoBox title='Recovered' 
-            cases={countryInfo.todayRecovered} 
-            total={countryInfo.recovered} />
-          <InfoBox title='Deaths' 
-            cases={countryInfo.todayDeaths} 
-            total={countryInfo.deaths} /> 
+          <InfoBox 
+            isRed
+            active={casesType==='cases'}
+            onClick={(e) => setCasesType('cases')}
+            title='Corona Cases' 
+            cases={makePrettierToday(countryInfo.todayCases)} 
+            total={makePrettierTotal(countryInfo.cases)} />
+          <InfoBox 
+            active={casesType==='recovered'}
+            onClick={(e) => setCasesType('recovered')}
+            title='Recovered' 
+            cases={makePrettierToday(countryInfo.todayRecovered)} 
+            total={makePrettierTotal(countryInfo.recovered)} />
+          <InfoBox 
+            isRed
+            active={casesType==='deaths'}
+            onClick={(e) => setCasesType('deaths')}
+            title='Deaths' 
+            cases={makePrettierToday(countryInfo.todayDeaths)} 
+            total={makePrettierTotal(countryInfo.deaths)} /> 
         </div>
          
-        <Mapp countries={mapCountries} center={mapCenter} zoom={mapZoom} />
+        <Mapp countries={mapCountries} casesType={casesType} center={mapCenter} zoom={mapZoom} />
 
       </div>
 
@@ -116,16 +128,8 @@ function App() {
           <h3>Live Cases By Country</h3>
           <Table countries={tableData} />
           
-          <h3>Worldwide Overview </h3>
-
-          {/* <h6>Total Cases</h6> */}
-          <LineGraph />
-          
-          {/* <h6>Recovered</h6> */}
-          {/* <LineGraph caseType='recovered' bg_col='#66ff66' border_col='#009900' /> */}
-
-          {/* <h6>Deaths</h6> */}
-          {/* <LineGraph caseType='deaths' /> */}
+          <h3>Worldwide new {casesType} </h3>
+          <LineGraph className='app__graph' caseType= {casesType}/>
 
         </CardContent>
 
