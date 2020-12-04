@@ -4,11 +4,11 @@
 body{
     background-color: #f5f6fa;
 }
+
 .app{
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
-
+    padding: 10px;
 }
 .app__header{
     display: flex;
@@ -16,11 +16,12 @@ body{
     justify-content: space-between;
     margin-bottom: 20px;
 }
+
 .app__left{
     flex: 0.9;
 }
 /* .app__right{
-    flex: 0.2;
+    flex: 0.1;
 } */
 
 .app__stats{

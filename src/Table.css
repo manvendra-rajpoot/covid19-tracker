@@ -3,15 +3,14 @@
     overflow: scroll;
     height: 400px;
     color: #6a5d5d;
-    margin-bottom: 20px;
-    /* padding: 10px; */
+    margin-bottom: 30px;
 }
 .table tr{
     display: flex;
     justify-content: space-between;
 }
 .table td{
-    padding: 0.5rem;
+    padding: 5px;
     font-size: small;
 }
 .table tr:nth-of-type(odd){
