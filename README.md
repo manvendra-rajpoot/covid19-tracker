@@ -1,4 +1,5 @@
 # Covid-19 Tracker
+
 This project is built in [react](https://github.com/facebook/create-react-app) and hosted at [firebase](https://firebase.google.com/).
 
 All the information is taken from `[disease.sh]`(https://disease.sh/) such as total cases, recovered, deaths and also detailed info of every country in the world.
